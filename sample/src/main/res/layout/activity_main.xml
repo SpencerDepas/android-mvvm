@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -19,28 +20,45 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".MainActivity">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{vm.onAdapterClick}"
-            android:text="@string/title_adapters" />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            bind:items="@{vm.secretTellers}">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{vm.onFunctionalClick}"
-            android:text="@string/title_functional" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{vm.onTwoWayBindingClick}"
-            android:text="@string/title_two_way_binding" />
+        </android.support.v7.widget.RecyclerView>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{vm.onCalculatorExampleClick}"
-            android:text="@string/title_calculator" />
+        <!--&lt;!&ndash;Example with dynamic views&ndash;&gt;-->
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--bind:items="@{vm.itemVms}"-->
+        <!--bind:layout_vertical="@{true}"-->
+        <!--bind:view_provider="@{ViewProviders.itemListing}" />-->
+
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="@{vm.onAdapterClick}"-->
+        <!--android:text="@string/title_adapters" />-->
+
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="@{vm.onFunctionalClick}"-->
+        <!--android:text="@string/title_functional" />-->
+
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="@{vm.onTwoWayBindingClick}"-->
+        <!--android:text="@string/title_two_way_binding" />-->
+
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="@{vm.onCalculatorExampleClick}"-->
+        <!--android:text="@string/title_calculator" />-->
     </LinearLayout>
 </layout>

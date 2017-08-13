@@ -23,12 +23,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.manaschaudhari.android_mvvm.ViewModel;
 import com.manaschaudhari.android_mvvm.adapters.ViewModelBinder;
 import com.manaschaudhari.android_mvvm.adapters.ViewProvider;
+import com.manaschaudhari.android_mvvm.sample.adapters.SecretTellerRVAdapter;
+import com.manaschaudhari.android_mvvm.sample.model.SecretTeller;
 import com.manaschaudhari.android_mvvm.utils.BindingUtils;
 
 import java.util.List;
@@ -54,6 +57,8 @@ public class BindingAdapters {
     }
 
 
+
+
     /**
      * Binding Adapter Wrapper for checking memory leak
      */
@@ -65,6 +70,22 @@ public class BindingAdapters {
         // Previous adapter should get deallocated
         if (previousAdapter != null)
             ExampleApplication.getRefWatcher(recyclerView.getContext()).watch(previousAdapter);
+    }
+
+    @BindingAdapter({"items" })
+    public static void bindSecretTellerRV(RecyclerView recyclerView, List<SecretTeller> items) {
+        SecretTellerRVAdapter adapter = null;
+        if (items != null ) {
+             adapter = new SecretTellerRVAdapter(items);
+        }
+        bindAdapter(recyclerView, adapter);
+    }
+
+    @BindingAdapter("adapter")
+    public static void bindAdapter(@NonNull RecyclerView recyclerView, @Nullable RecyclerView.Adapter adapter) {
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+
     }
 
     /**
